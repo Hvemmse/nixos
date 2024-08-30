@@ -21,7 +21,11 @@
     version = 2;             # Brug GRUB version 2
     device = "/dev/sda";     # Installer GRUB på MBR af den første disk (erstat /dev/sda hvis din disk er en anden)
   };
-
+    # Anbefalede konfigurationer for filsystem
+  fileSystems."/" = {
+    device = "/dev/sda1";  # Den partition, hvor root filsystemet skal være
+    fsType = "ext4";       # Filtype som ext4 (ændr til det ønskede filsystem)
+  };
   # Installer essentielle pakker til programmering
   environment.systemPackages = with pkgs; [
     vim           # Teksteditor
