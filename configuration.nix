@@ -14,13 +14,14 @@
     extraGroups = [ "wheel" ]; # Tilføj bruger til 'wheel' gruppen for sudo-adgang
     hashedPassword = "$6$XwjT5FqvmQrSNDYC$p2.sNvKVdh/NUtRA5XY4trrMlrSGJi5UownI60ib8AxeNA0lUKfBE6FilnshHWJBdB6C5POXbHTIxTrCcNLMv."; # Erstat med hash af brugerens kodeord
   };
-  {
+
   # Bootloader konfiguration
   boot.loader.grub = {
     enable = true;           # Aktiver GRUB bootloader
     version = 2;             # Brug GRUB version 2
     device = "/dev/sda";     # Installer GRUB på MBR af den første disk (erstat /dev/sda hvis din disk er en anden)
   };
+
   # Installer essentielle pakker til programmering
   environment.systemPackages = with pkgs; [
     vim           # Teksteditor
