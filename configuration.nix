@@ -23,7 +23,7 @@
   };
     # Anbefalede konfigurationer for filsystem
   fileSystems."/" = {
-    device = "/dev/sda1";  # Den partition, hvor root filsystemet skal være
+    device = "/dev/sda2";  # Den partition, hvor root filsystemet skal være
     fsType = "ext4";       # Filtype som ext4 (ændr til det ønskede filsystem)
   };
   # Installer essentielle pakker til programmering
@@ -34,11 +34,11 @@
     gdb           # GNU Debugger
     python310     # Python 3.10
     nodejs        # Node.js runtime
-    npm           # Node Package Manager
+    #npm           # Node Package Manager
     docker        # Containerplatform
     curl          # Filoverførselsværktøj
     wget          # HTTP-klient
-    vscode        # Visual Studio Code
+    #vscode        # Visual Studio Code
   ];
 
   # Aktiver LXQt-skrivebordsmiljø
@@ -48,7 +48,7 @@
   services.xserver.desktopManager.lxqt.enable = true;
 
   # Aktiver og konfigurer nogle udviklingsrelaterede tjenester
-  services.docker.enable = true;
+  # services.docker.enable = true;
   services.openssh.enable = true; # Aktiverer SSH-tjeneste
 
   # Firewall-indstillinger
