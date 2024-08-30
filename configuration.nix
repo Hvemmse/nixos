@@ -34,7 +34,7 @@
     gdb           # GNU Debugger
     python310     # Python 3.10
     nodejs        # Node.js runtime
-    #npm           # Node Package Manager
+    firefox       # firefox browser
     docker        # Containerplatform
     curl          # Filoverførselsværktøj
     wget          # HTTP-klient
