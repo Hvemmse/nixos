@@ -1,0 +1,55 @@
+{ config, pkgs, ... }:
+
+{
+  # Basic system configuration
+  system.stateVersion = "23.05"; # Juster til den version af NixOS du bruger
+
+  users.users.frank = {
+    isNormalUser = true;
+    description = "Frank";
+    home = "/home/frank";
+    createHome = true;
+    password = "Fredag920"; # Husk at hashe koden for bedre sikkerhed!
+    shell = pkgs.bash;
+  };
+
+  # Enable Cinnamon desktop environment
+  services.xserver = {
+    enable = true;
+    layout = "us";
+    desktopManager.cinnamon.enable = true;
+
+    # Enable lightdm as the display manager
+    displayManager.lightdm.enable = true;
+  };
+
+  # Packages to install
+  environment.systemPackages = with pkgs; [
+    chromium
+    firefox
+    gedit
+  ];
+
+  # Static network configuration
+  networking.interfaces.enp0s3 = {
+    useDHCP = false;
+    ipv4.addresses = [{
+      address = "192.168.1.99";
+      prefixLength = 24;
+    }];
+    ipv4.gateway = "192.168.1.1"; # Din router/gateway
+    nameservers = [ "8.8.8.8" "1.1.1.1" ]; # Google og Cloudflare DNS
+  };
+
+  # Set time zone and locales
+  time.timeZone = "Europe/Copenhagen";
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  # Enable sound and network manager (optional)
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+  networking.networkmanager.enable = true;
+
+  # Enable NixOS services for convenience (e.g., OpenSSH)
+  services.openssh.enable = true;
+}
